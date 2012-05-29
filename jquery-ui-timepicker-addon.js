@@ -1358,15 +1358,17 @@ $.datepicker._optionDatepicker = function(target, name, value) {
 	if (tp_inst) {
 		var min = null, max = null, onselect = null;
 		if (typeof name == 'string') { // if min/max was set with the string
-			if (name === 'minDate' || name === 'minDateTime' ) {
+			if (name == 'minDate' || name == 'minDateTime' ) {
 				min = value;
+				name = 'minDate';
             }
 			else {
-                if (name === 'maxDate' || name === 'maxDateTime') {
+                if (name == 'maxDate' || name == 'maxDateTime') {
                     max = value;
+                    name = 'maxDate';
                 }
                 else {
-                    if (name === 'onSelect') {
+                    if (name == 'onSelect') {
                         onselect = value;
                     }
                 }
@@ -1378,12 +1380,14 @@ $.datepicker._optionDatepicker = function(target, name, value) {
                 } else {
                     if (name.minDateTime) {
                         min = name.minDateTime;
+                        name.minDate = name.minDateTime;
                     } else {
                         if (name.maxDate) {
                             max = name.maxDate;
                         } else {
                             if (name.maxDateTime) {
                                 max = name.maxDateTime;
+                                name.maxDate = name.maxDateTime;
                             }
                         }
                     }
@@ -1392,6 +1396,7 @@ $.datepicker._optionDatepicker = function(target, name, value) {
         }
 		if(min) { //if min was set
 			if (min === 0) {
+				// IT WILL NEVER COME HERE!
 				min = new Date();
             } else {
 				min = new Date(min);
@@ -1401,6 +1406,7 @@ $.datepicker._optionDatepicker = function(target, name, value) {
 			tp_inst._defaults.minDateTime = min;
 		} else if (max) { //if max was set
 			if(max===0) {
+				// IT WILL NEVER COME HERE!
 				max=new Date();
             } else {
 				max= new Date(max);
