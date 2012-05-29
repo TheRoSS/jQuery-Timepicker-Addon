@@ -630,7 +630,7 @@ $.extend(Timepicker.prototype, {
 	//########################################################################
 	_limitMinMaxDateTime: function(dp_inst, adjustSliders){
 		var o = this._defaults,
-			dp_date = new Date(dp_inst.selectedYear, dp_inst.selectedMonth, dp_inst.selectedDay);
+			dp_date = new Date(dp_inst.currentYear, dp_inst.currentMonth, dp_inst.currentDay);
 
 		if(!this._defaults.showTimepicker) { return; } // No time so nothing to check here
 
